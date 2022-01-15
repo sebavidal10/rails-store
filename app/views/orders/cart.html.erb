@@ -1,0 +1,18 @@
+<div class="row">
+    <h1>Cart</h1>
+    <% @orders.each do |order| %>
+    <div class="col-12">
+        <div class="flaot-left">
+            <%= order.stock.product.name %>
+        </div>
+        <div class="float-right">
+            USD $<%= order.stock.price %>
+        </div>
+    </div>
+    <% end %>
+    <div class="col-12 text-right">
+        <hr>
+        Total: <%= number_to_currency(@orders.where(payed: false).map{ |order| order.stock.price }.sum, unit: '$', delimiter: ",", presicion: 0)%>
+        <%= link_to "Checkout", checkout_path, class: "btn btn-success", method: :post %>
+    </div>
+</div>

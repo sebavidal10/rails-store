@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+    <div class="col-6">
+        <%= image_tag(@product.photo, class: "w-100") %>
+        <%= link_to 'Edit', edit_product_path(@product) %> |
+        <%= link_to 'Products', products_path %>
+    </div>
+    <div class="col-6">
+        <strong><%= @product.name %> / </strong>
+        <%= @product.category.name %>
+        <p>
+            <%= @product.description %>
+        </p>
+        <hr />
+        <p>
+            <strong>Available in:</strong><br />
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-light">S</button>
+            <button type="button" class="btn btn-light">M</button>
+            <button type="button" class="btn btn-info">L</button>
+            <button type="button" class="btn btn-info">XL</button>
+        </div>
+        </p>
+        <hr />
+        <p>
+            <strong>Delivery typs:</strong><br />
+            [IMG][OPTIONS]
+        </p>
+        <hr />
+        <p>
+            <strong>Payment Methods:</strong><br />
+            <% if @product.stocks.count { |p| p.enabled } > 0 %>
+        <div class="float-left">
+            <%= link_to 'Add to Cart', orders_path(:order => {:stock_id => @product.stocks.last.id}), :method => :post %>
+        </div>
+        <div class="float-right">
+            USD $<%= @product.stocks.last.price %>
+        </div>
+        <% else %>
+        <a href="#" class="text-muted">No Stock</a>
+        <% end %>
+        </p>
+    </div>
+</div>

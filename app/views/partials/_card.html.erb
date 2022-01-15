@@ -1,0 +1,24 @@
+<div class="col-3 mt-4">
+    <div class="card">
+        <a href="/products/<%= product.id %>">
+            <%= image_tag(product.photo, class: "card-img-top") %>
+        </a>
+        <div class="card-body">
+            <h5 class="card-title"><%= product.name %> / <span class="text-block-50"><%= product.category.name %></span></h5>
+            <p class="card-text"><%= truncate(product.description, :length => 120, :separator => ' ') %></p>
+            <p class="card-text text-left"><span class="flaot-left">
+                    <% if product.stocks.count { |p| p.enabled } > 0 %>
+                    <%= link_to 'Add to Cart', orders_path(:order => {:stock_id => product.stocks.last.id}) , :method => :post %>
+                    <% else %>
+                    <a href="#" class="text-muted">No Stock</a>
+                    <% end %>
+                </span>
+                <span class="float-right">
+                    <% if product.stocks.count > 0 %>
+                    <%= number_to_currency(product.stocks.last.price, unit: "$", delimiter:",", precision: 0) %> USD
+                    <% end %>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

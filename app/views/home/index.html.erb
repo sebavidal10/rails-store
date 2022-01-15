@@ -1,0 +1,5 @@
+<div class="row mt-3">
+    <% @products.each do |product| %>
+    <%= render 'partials/card', product: product %>
+    <% end %>
+</div>

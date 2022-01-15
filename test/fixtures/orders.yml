@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payed: false
+  pay_way: MyString
+  pay_date: 2021-07-04 13:30:43
+  user: one
+  stock: one
+
+two:
+  payed: false
+  pay_way: MyString
+  pay_date: 2021-07-04 13:30:43
+  user: two
+  stock: two
