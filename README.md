@@ -25,4 +25,12 @@ bin/webpack-dev-server
 rails s
 ```
 
+### Models
+
+Currently has this models:
+- order
+- product
+- stock
+- user
+
 [WIP]
